@@ -21,3 +21,22 @@ Sulla base di queste informazioni dovrà calcolare il prezzo totale del viaggio,
 6- calcolo uno sconto del 40% se l'utente ha più di 65 anni.
 
 7- calcolare il prezzo finale del biglietto (con massimo 2 decimali).
+*/
+
+// ESERCIZIO
+
+// 1- prendo l'elemento dal DOM.
+
+const targetElement = document.getElementById("target");
+
+// 2- chiedo all'utente il numero di chilometri che vuole percorrere.
+
+const kilometres = prompt("Quanti chilometri deve fare?", 25);
+
+// 3- chiedo all'utente la sua età.
+
+const userAge = prompt("Quanti anni ha?", 30);
+
+// 4- calcolo il prezzo del biglietto, che è definito in base ai chilometri (0.21 € al km).
+
+const ticketPrice = kilometres * 0.21;
