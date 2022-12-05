@@ -35,11 +35,11 @@ const targetElement = document.getElementById("target");
 
 // 2- chiedo all'utente il numero di chilometri che vuole percorrere.
 
-const kilometres = parseInt(prompt("Quanti chilometri deve fare?", 25).trim);
+const kilometres = parseInt(prompt("Quanti chilometri deve fare?", 25).trim());
 
 // 3- chiedo all'utente la sua età.
 
-const userAge = parseInt(prompt("Quanti anni ha?", 30).trim);
+const userAge = parseInt(prompt("Quanti anni ha?", 30).trim());
 
 // 4- calcolo il prezzo del biglietto, che è definito in base ai chilometri (0.21 € al km).
 
@@ -60,3 +60,19 @@ const discountOver = (ticketPrice * 40) / 100;
 // 6b- calcolo il prezzo del biglietto con lo sconto del 40% applicato.
 
 const ticketOver = ticketPrice - discountOver;
+
+/* 7- applico gli sconti in base all'età dell'utente e 
+   8- calcolo il prezzo finale del biglietto e lo stampo nel DOM.
+*/
+
+if (userAge >= 1 && userAge < 18) {
+  targetElement.innerText = `il prezzo del tuo biglietto è: ${ticketUnder}`;
+}
+
+if (userAge >= 18 && userAge < 65) {
+  targetElement.innerText = `il prezzo del tuo biglietto è: ${ticketPrice}`;
+}
+
+if (userAge >= 65) {
+  targetElement.innerText = `il prezzo del tuo biglietto è: ${ticketOver}`;
+}
