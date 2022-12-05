@@ -27,34 +27,50 @@ const targetElement = document.getElementById("target");
 
 // 2- chiedo all'utente il numero di chilometri che vuole percorrere.
 
-const kilometres = parseInt(prompt("Quanti chilometri deve fare?", 25).trim());
-console.log(kilometres);
+const kilometres = parseInt(prompt("Quanti chilometri devi fare?", 25).trim());
 
 // 3- chiedo all'utente la sua età.
 
-const userAge = parseInt(prompt("Quanti anni ha?", 30).trim());
-console.log(userAge);
+const userAge = parseInt(prompt("Quanti anni hai?", 30).trim());
 
-// 4- calcolo il prezzo del biglietto, che è definito in base ai chilometri (0.21 € al km).
+// ****** VALIDAZIONE ******
 
-const ticketPrice = kilometres * 0.21;
+let isValid = true;
 
-// 5- calcolo il prezzo del biglietto in base all'età dell'utente e applico lo sconto corretto al biglietto.
+// verifico che kilometres e userAge non siano numeri.
 
-if (userAge >= 1 && userAge < 18) {
-  targetElement.innerText = `il prezzo del tuo biglietto è: ${
-    Math.round((ticketPrice - (ticketPrice * 20) / 100) * 100) / 100
-  } €`;
+if (isNaN(kilometres) || isNaN(userAge)) {
+  isValid = false;
+  alert("Devi inserire un 'numero'");
 }
 
-if (userAge >= 18 && userAge < 65) {
-  targetElement.innerText = `il prezzo del tuo biglietto è: ${
-    Math.round(ticketPrice * 100) / 100
-  } €`;
+if (kilometres === 0 || userAge === 0) {
+  isValid = false;
+  alert("devi inserire un numero diverso da '0'");
 }
 
-if (userAge >= 65) {
-  targetElement.innerText = `il prezzo del tuo biglietto è: ${
-    Math.round((ticketPrice - (ticketPrice * 40) / 100) * 100) / 100
-  } €`;
+if (isValid) {
+  // 4- calcolo il prezzo del biglietto, che è definito in base ai chilometri (0.21 € al km).
+
+  const ticketPrice = kilometres * 0.21;
+
+  // 5- calcolo il prezzo del biglietto in base all'età dell'utente e applico lo sconto corretto al biglietto.
+
+  if (userAge >= 1 && userAge < 18) {
+    targetElement.innerText = `il prezzo del tuo biglietto è: ${
+      Math.round((ticketPrice - (ticketPrice * 20) / 100) * 100) / 100
+    } €`;
+  }
+
+  if (userAge >= 18 && userAge < 65) {
+    targetElement.innerText = `il prezzo del tuo biglietto è: ${
+      Math.round(ticketPrice * 100) / 100
+    } €`;
+  }
+
+  if (userAge >= 65) {
+    targetElement.innerText = `il prezzo del tuo biglietto è: ${
+      Math.round((ticketPrice - (ticketPrice * 40) / 100) * 100) / 100
+    } €`;
+  }
 }
